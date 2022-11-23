@@ -1,45 +1,59 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: U.S. Total Incarceration Population Analysis
+author: "Katie Stevens"
+date: '2022-11-22'
 output: html_document
 ---
 
 ```{r echo=FALSE, eval=TRUE, message=FALSE}
 source("../source/a4-helpers.R")
 source("../source/analysis.R")
+library("tidyverse")
+library("dplyr")
+library("ggplot2")
 ```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
-
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
-
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
+In this report I explore inequalities in the prison system in the United States through incarceration trends across race, gender, location, and other demographics. I focus on racial inequalities affecting black people in the United States and incarceration trends relating to race.
 
 ## Introduction 
-[TODO]
+The goal of this report is to expose patterns of inequality using incarceration data collected by the Vera Institute, which aims to use the collected data to end racist systems. The research involved in this dataset involves social values of race, gender, and systemic inequality and oppression. It explores the inequalities of mass incarceration as it is related to oppressed groups. Direct stakeholders include politicians who may use the research in the dataset to promote specific issues relevant to their platforms, prison systems, and the government. There are many indirect stakeholders who are affected by this dataset. They include the many people convicted and jailed, as well as their families who have also been affected by the same systemic inequalities that affect incarceration rates across different demographics and identities. 
 
+The questions I will answer in this report include:
+  * Which states or counties have the highest amount of black inmates?
+  * How has the total incarcerated population changed through time?
+  * How do incarceration rates differ between states, and what can we infer from the results?
+  * How do incarceration numbers differ between demographics? How do they compare to other demographics through time?
+  
 ## Data Summary 
-[TODO]
+In my data summary, I focused on variables concerning white and black populations and incarcerated black populations to examine potential racial inequalities. New York is the state with the highest black population, as well as the highest incarcerated black population. It is not the state with the highest white population or highest incarcerated white population. The highest white population is 1,962,014, while the highest black population in New York is 1,367,586.The highest white jailed population in NY is 1,000, while the highest black jailed population in NY is 8,093. This suggests that while a black population may be less than the white population in a given area, black people will have a higher rate of incarceration than white people.
 
-[TODO ... other sections ... See Canvas for details]
+## Growth of the U.S. Prison System
+```{r echo=FALSE}
+plot_jail_pop_for_us()
+```
+###### How has the total incarcerated population changed over time?
+This graph shows how the total incarcerated population in the United States has increased between 1970 to 2018. In 1970, the total population was under 200,000 and by 2018 had increased to over 700,000. The total population was relatively steady until about 1975, when the incarcerated population began to steadily rise.
 
-_All the very best with your work!_
+## Growth of Prison Population by State
+'''{r echo=FALSE}
+plot_jail_pop_by_states(states)
+'''
+###### How has the total incarcerated population by state changed over time?
+This graph shows total prison population by state from the years 1970 to 2018. I chose four states: Washington, California, New York, and California. I chose Washington and California to represent West Coast states, and California because it has the highest jailed white population. I also chose Texas because of its known history of incarceration, and New York because of the values calculated in the data summary. Washington had the smallest change in incarceration totals, staying under a total of 200,000. In contrast, California had a steep rise in incarceration totals in the late 1970s, with Texas following a similar trend. Surprisingly, New York shows a very slight decline since about 2000. 
+
+## Increase of Jail Populations in U.S. by Race (1988-2018)
+```{r echo=FALSE}
+plot_get_jailed_pop()
+```
+###### How has the total incarcerated population by race changed over time?
+This graph shows the total prison population by race over a span of 30 years (1988-2018). All variables have experienced an increase in incarceration, but this is most apparent in black and white populations. The total incarceration population has doubled for black people, while white populations have *almost* doubled.
+
+## Section 6 Map
+```{r echo=FALSE}
+plot_map()
+```
+###### Where are black jail populations clustered in the U.S.?
+This graph shows where black jail populations are clustered. They are clustered in the Northeast and Southeast United States, with a small cluster in California, while data is relatively absent in the MidWest and West.
+
 
